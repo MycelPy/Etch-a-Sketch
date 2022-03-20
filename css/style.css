@@ -4,15 +4,11 @@
 
 .row {
     display: flex;
-    font-size: 9.5px;
-    text-align: center;
-    color: red
 }
 
 .cell {
     width: 40px;
     height: 40px;
-    margin: 0;
     border: 1px solid black;
 }
 
@@ -35,26 +31,29 @@ body {
     align-items: center;
 }
 
+.container {
+    width: 600px;
+    height: 600px;
+}
+
 .buttonArea {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-right: 20px;
+    width: 200px;
 }
 
 .btn {
     background-color: #FF7377;
     margin: 20px;
     border: 1px solid black;
-    width: 80px;
+    width: 100px;
     height: 40px;
     text-align: center;
 }
 
 .rainbow {
     background-image: linear-gradient( to right, #c8beff 0%, #dea8f8 10%, #a8deff 30%, #bdfacd 42%, #f3fabd 58%, #fae3bd 70%, #f8acab 95%, #feaad4 100%);
-}
-
-.choose {
-    background-color: #add8e6;
 }

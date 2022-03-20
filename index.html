@@ -16,13 +16,16 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- JS -->
     <script src="js/stylo.js" type='text/javascript' defer></script>
+    <script src="js/jscolor.js" type="text/javascript" defer></script>
     <title>Document</title>
 </head>
 
 <body>
     <div class="sketch">
         <div class="buttonArea">
-            <button class="btn choose">Choose colour</button>
+            <input type="range" min="1" max="100" value="16" class="slider">
+            <p class="sliderValue"></p>
+            <button data-jscolor="{value:'#000000', alpha:1}" onInput="update(this.jscolor)" class="btn choose">Choose colour</button>
             <button class="btn rainbow">Rainbow</button>
             <button class="btn clear">Clear</button>
         </div>
