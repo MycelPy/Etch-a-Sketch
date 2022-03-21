@@ -4,6 +4,7 @@ const clear = document.querySelector('.clear')
 const rainbow = document.querySelector('.rainbow')
 const choose = document.querySelector('.choose')
 const slider = document.querySelector('.slider')
+const active = document.querySelector('.active')
 const sliderValue = document.querySelector('.sliderValue')
 const defaultSize = 16;
 sliderValue.innerHTML = `Squares per side: ${slider.value}`;
@@ -34,20 +35,34 @@ function makeGrid(size) {
         cell.addEventListener('mouseover', () => {
             cell.setAttribute('style', `background-color: ${choose.getAttribute('data-current-color')}`)
         })
-        rainbow.addEventListener('click', () => {
-            cell.addEventListener('mouseover', () => {
-                cell.setAttribute('style', `background-color: ${getColorCode()}`)
-            })
-        })
+        celll(cell)
+        rainboww(cell)
         grid.appendChild(cell)
     }
+}
+
+function rainboww(x) {
+    rainbow.addEventListener('click', () => {
+        x.addEventListener('mouseover', () => {
+            x.setAttribute('style', `background-color: ${getColorCode()}`)
+        })
+    })
+}
+
+function celll(x) {
+    choose.addEventListener('click', () => {
+        x.addEventListener('mouseover', () => {
+            x.setAttribute('style', `background-color: ${choose.getAttribute('data-current-color')}`)
+        })
+    })
 }
 
 
 // UPDATING VALUE OF SLIDER
 slider.oninput = function() {
     sliderValue.innerHTML = `Squares per side: ${this.value}`
-    clearGrid(this.value)
+    grid.innerHTML = ''
+    makeGrid(this.value)
 }
 
 // CLEAR 
@@ -55,11 +70,6 @@ clear.addEventListener('click', () => {
     grid.innerHTML = '';
     makeGrid(slider.value)
 })
-
-function clearGrid(x) {
-    grid.innerHTML = '';
-    makeGrid(x)
-}
 
 window.onload = () => {
     makeGrid(defaultSize)
