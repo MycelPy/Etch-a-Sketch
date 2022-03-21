@@ -4,10 +4,20 @@ const clear = document.querySelector('.clear')
 const rainbow = document.querySelector('.rainbow')
 const choose = document.querySelector('.choose')
 const slider = document.querySelector('.slider')
-const active = document.querySelector('.active')
+const btns = document.querySelectorAll('.btn')
 const sliderValue = document.querySelector('.sliderValue')
 const defaultSize = 16;
-sliderValue.innerHTML = `Squares per side: ${slider.value}`;
+sliderValue.innerHTML = `${slider.value} x ${slider.value}`;
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('text');
+}
+
+
+btns.forEach(btn => btn.addEventListener('mouseover', () => {
+    btn.classList.add('text')
+}))
 
 // GET COLOR
 function getColorCode() {
@@ -60,7 +70,7 @@ function celll(x) {
 
 // UPDATING VALUE OF SLIDER
 slider.oninput = function() {
-    sliderValue.innerHTML = `Squares per side: ${this.value}`
+    sliderValue.innerHTML = `${this.value} x ${this.value}`
     grid.innerHTML = ''
     makeGrid(this.value)
 }
@@ -70,6 +80,8 @@ clear.addEventListener('click', () => {
     grid.innerHTML = '';
     makeGrid(slider.value)
 })
+
+btns.forEach(btn => btn.addEventListener('transitionend', removeTransition));
 
 window.onload = () => {
     makeGrid(defaultSize)

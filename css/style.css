@@ -13,13 +13,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #a8deff;
+    background-color: #ffffff;
 }
 
 .sketch {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: -220px;
 }
 
 .grid {
@@ -27,7 +28,7 @@ body {
     width: 600px;
     height: 600px;
     display: grid;
-    background-color: #969696;
+    background-color: #96969620;
 }
 
 .buttonArea {
@@ -40,21 +41,35 @@ body {
 }
 
 .btn {
-    background-color: #FF7377;
+    background-color: #FF737710;
     margin: 20px;
     border: 1px solid black;
-    width: 100px;
+    width: 150px;
     height: 40px;
     text-align: center;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    font-weight: bold;
+}
+
+.text {
+    transform: scale(1.1);
+}
+
+.active {
+    margin: 0;
 }
 
 .rainbow {
-    background-image: linear-gradient( to right, #c8beff 0%, #dea8f8 10%, #a8deff 30%, #bdfacd 42%, #f3fabd 58%, #fae3bd 70%, #f8acab 95%, #feaad4 100%);
+    background-image: linear-gradient( to right, #c8beff50 0%, #dea8f850 10%, #a8deff 30%, #bdfacd50 42%, #f3fabd50 58%, #fae3bd50 70%, #f8acab50 95%, #feaad450 100%);
 }
 
 .whole {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+}
+
+.heading {
+    font-size: 100px;
+    font-weight: bold;
 }
