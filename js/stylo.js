@@ -1,9 +1,12 @@
-let i = 0,
-    n = 16;
-
-container.innerHTML =
-    `<div class="row">${'<div class="cell"></div>'.repeat(n)}</div>`
-    .repeat(n)
+// LOADING ELEMENTS
+const grid = document.querySelector('.grid')
+const clear = document.querySelector('.clear')
+const rainbow = document.querySelector('.rainbow')
+const choose = document.querySelector('.choose')
+const slider = document.querySelector('.slider')
+const sliderValue = document.querySelector('.sliderValue')
+const defaultSize = 16;
+sliderValue.innerHTML = `Squares per side: ${slider.value}`;
 
 // GET COLOR
 function getColorCode() {
@@ -15,42 +18,49 @@ function getColorCode() {
     return code;
 }
 
-// LOADING ELEMENTS
-const cells = document.querySelectorAll('.cell')
-const clear = document.querySelector('.clear')
-const rainbow = document.querySelector('.rainbow')
-const choose = document.querySelector('.choose')
-const slider = document.querySelector('.slider')
-const sliderValue = document.querySelector('.sliderValue')
-sliderValue.innerHTML = `Squares per side: ${slider.value}`;
+function clickHandler() {
+    elementIsClicked = true;
+}
+
+// MAKE A GRID
+
+function makeGrid(size) {
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
+
+    for (i = 0; i < size * size; i++) {
+        const cell = document.createElement('div')
+        cell.classList.add('cell')
+        cell.addEventListener('mouseover', () => {
+            cell.setAttribute('style', `background-color: ${choose.getAttribute('data-current-color')}`)
+        })
+        rainbow.addEventListener('click', () => {
+            cell.addEventListener('mouseover', () => {
+                cell.setAttribute('style', `background-color: ${getColorCode()}`)
+            })
+        })
+        grid.appendChild(cell)
+    }
+}
+
 
 // UPDATING VALUE OF SLIDER
 slider.oninput = function() {
-    sliderValue.innerHTML = `Squares per side: ${this.value}`;
-    n = Number(this.value);
-
+    sliderValue.innerHTML = `Squares per side: ${this.value}`
+    clearGrid(this.value)
 }
 
-// DEFAULT BLACK COLOR ON HOVER
-cells.forEach(cell => cell.addEventListener('mouseover', () => {
-    cell.setAttribute('style', 'background-color: black;')
-}))
-
-// CLEAR
+// CLEAR 
 clear.addEventListener('click', () => {
-    cells.forEach(cell => cell.setAttribute('style', 'background-color: white;'))
+    grid.innerHTML = '';
+    makeGrid(slider.value)
 })
 
-// RAINBOW COLOR
-rainbow.addEventListener('click', () => {
-    cells.forEach(cell => cell.addEventListener('mouseover', () => {
-        cell.setAttribute('style', `background-color: ${getColorCode()}`)
-    }))
-})
+function clearGrid(x) {
+    grid.innerHTML = '';
+    makeGrid(x)
+}
 
-// CHOOSE COLOR
-choose.addEventListener('click', (e) => {
-    cells.forEach(cell => cell.addEventListener('mouseover', () => {
-        cell.setAttribute('style', `background-color: ${e.target.getAttribute('data-current-color')}`)
-    }))
-})
+window.onload = () => {
+    makeGrid(defaultSize)
+}

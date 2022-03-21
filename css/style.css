@@ -2,16 +2,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.row {
-    display: flex;
-}
-
-.cell {
-    width: 40px;
-    height: 40px;
-    border: 1px solid black;
-}
-
 .cellHover {
     background-color: black;
 }
@@ -23,6 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #a8deff;
 }
 
 .sketch {
@@ -31,9 +22,12 @@ body {
     align-items: center;
 }
 
-.container {
+.grid {
+    box-shadow: 4px 3px 8px 1px #969696;
     width: 600px;
     height: 600px;
+    display: grid;
+    background-color: #969696;
 }
 
 .buttonArea {
@@ -56,4 +50,11 @@ body {
 
 .rainbow {
     background-image: linear-gradient( to right, #c8beff 0%, #dea8f8 10%, #a8deff 30%, #bdfacd 42%, #f3fabd 58%, #fae3bd 70%, #f8acab 95%, #feaad4 100%);
+}
+
+.whole {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

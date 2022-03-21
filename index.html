@@ -21,16 +21,20 @@
 </head>
 
 <body>
-    <div class="sketch">
-        <div class="buttonArea">
-            <input type="range" min="1" max="100" value="16" class="slider">
-            <p class="sliderValue"></p>
-            <button data-jscolor="{value:'#000000', alpha:1}" onInput="update(this.jscolor)" class="btn choose">Choose colour</button>
-            <button class="btn rainbow">Rainbow</button>
-            <button class="btn clear">Clear</button>
+    <div class="whole">
+        <h1>Etch-a-Sketch</h1>
+        <div class="sketch">
+            <div class="buttonArea">
+                <input type="range" min="1" max="64" value="16" class="slider">
+                <p class="sliderValue"></p>
+                <button data-jscolor="{value:'#000000', alpha:1}" onInput="update(this.jscolor)" class="btn choose">Choose colour</button>
+                <button class="btn rainbow">Rainbow</button>
+                <button class="btn clear">Clear</button>
+            </div>
+            <div class="grid"></div>
         </div>
-        <div id="container"></div>
     </div>
+
 </body>
 
 </html>
